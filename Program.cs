@@ -47,7 +47,7 @@ class Program
         Console.WriteLine();
         //3
         int n, k = 0, s = 0, r;
-        Console.Write("Enter a number: ");
+        Console.Write("Enter a number : ");
         n = Convert.ToInt32(Console.ReadLine());
         int x = n;
         while (x > 0)
