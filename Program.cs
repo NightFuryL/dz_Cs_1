@@ -1,27 +1,27 @@
 ﻿using System;
 using dz_Cs_1.Exercise1;
-using dz_Cs_1.Exercise2;
+
+
 class Program
 {
     static void Main()
     {
         #region HW 29.11.2025 - 06.12.2025
-        //1.1
-        IRemoteControl tv = new TvRemoteControl();
-        tv.TurnOn();
-        tv.SetChannel(5);
-        tv.TurnOff();
-        //1.2
-        IRemoteControl radio = new RadioRemoteControl();
-        radio.TurnOn();
-        radio.SetChannel(101);
-        radio.TurnOff();
-        //2.1
-        IValidator email = new EmailValidator("lev@mail.com");
-        //2.2
-        IValidator password = new PasswordValidator("(:password:)");
-        Console.WriteLine("Email valid: " + email.Validate());
-        Console.WriteLine("Password valid: " + password.Validate());
+        //1
+        Book b1 = new Book { Title = "B1", Author = "AB1", Year = 2000, Pages = 150 };
+        b1.Show();
+        b1.Dispose();
+        Book b2 = new Book { Title = "B2", Author = "AB2", Year = 1999, Pages = 300 };
+        b2 = null;
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        //2
+        using (Library lib = new Library())
+        {
+            lib.Add(new Book { Title = "Game Of Thrones", Author = "George R. R. Martin", Year = 1996, Pages = 333 });
+            lib.Add(new Book { Title = "Meditations", Author = "Mark Aurelius", Year = 100, Pages = 333 });
+            lib.ShowAll();
+        }
         #endregion
     }
 }
